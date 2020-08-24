@@ -44,7 +44,7 @@ Example Playbook
         name: active-directory-domain
       vars:
         domain: "testdomain.local"
-        safemodepw: ""
+        safemodepw: "SomePassword"
 ```
 
 License
