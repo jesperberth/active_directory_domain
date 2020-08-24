@@ -1,0 +1,28 @@
+---
+- name: Install AD-Tools and DNS
+  win_feature:
+    name:
+    - DNS
+    - AD-Domain-Services
+    state: present
+    include_management_tools: yes
+  register: feature_install
+
+- name: Reboot if required
+  win_reboot:
+  when: feature_install.reboot_required
+
+- name: Create new Active Directory
+  win_domain:
+    create_dns_delegation: no
+    database_path: C:\Windows\NTDS
+    dns_domain_name: "{{ domain }}"
+    domain_mode: Win2012R2
+    forest_mode: Win2012R2
+    safe_mode_password: "{{ safemodepw }}"
+    sysvol_path: C:\Windows\SYSVOL
+  register: domain_install
+
+- name: Reboot if required
+  win_reboot:
+  when: domain_install.reboot_required
