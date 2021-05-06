@@ -1,17 +1,14 @@
-Active_Directory_Domain
-=========
+# Active_Directory_Domain
 
-Creates a Active Directory Domain on Windows Server 
+Creates a Active Directory Domain on Windows Server
 
-Requirements
-------------
+## Requirements
 
 Requires WinRM
 
 pip install winrm
 
-Role Variables
---------------
+## Role Variables
 
 Role takes following vars
 
@@ -19,13 +16,11 @@ safemodepw = Active Directory Safe Mode Password
 
 domain = Domain name for Active Directory
 
-Dependencies
-------------
+## Dependencies
 
 None
 
-Example Playbook
-----------------
+## Example Playbook
 
 ```ansible
 
@@ -41,18 +36,16 @@ Example Playbook
   tasks:
     - name: Configure AD
       include_role:
-        name: active-directory-domain
+        name: jesperberth.active_directory_domain
       vars:
         domain: "testdomain.local"
         safemodepw: "SomePassword"
 ```
 
-License
--------
+## License
 
 BSD
 
-Author Information
-------------------
+## Author Information
 
 Jesper Berth
